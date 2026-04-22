@@ -1,0 +1,23 @@
+{
+  "name": "takuzu",
+  "version": "1.0.0",
+  "description": "Juego binario Takuzu",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danigv23/takuzu.git"
+  },
+  "author": "Joel, Adrian y Dani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danigv23/takuzu/issues"
+  },
+  "homepage": "https://github.com/danigv23/takuzu#readme",
+  "devDependencies": {
+    "electron": "^41.2.2"
+  }
+}
