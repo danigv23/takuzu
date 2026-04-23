@@ -1,0 +1,16 @@
+/* {"Amber Flame":"fcba04","Inferno":"a50104","Black Cherry":"590004","Rich Mahogany":"250001","White Smoke":"f3f3f3"} */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.barraSuperior {
+    background-color: #590004;
+    min-height: 3rem;
+}
+
+.menuLateral {
+    display: flex;
+    flex-direction: column;
+}
