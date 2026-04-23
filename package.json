@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/danigv23/takuzu#readme",
   "devDependencies": {
-    "electron": "^41.2.2"
+    "electron": "^41.3.0"
   }
 }
