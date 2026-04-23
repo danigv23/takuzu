@@ -9,44 +9,35 @@ class Takuzu {
         this.#tablero = tableroElegido;
     };
 
-    crearTablero(elementoPadre) {
-        let f = 0;
-        let c = 0;
+    // mostrarTablero(){
+    //     for (let i = 0; i < this.#tablero.length; i++) {
+    //         for (let j = 0; j < this.#tablero.length; j++) {
+    //             console.log(this.#tablero[i][j]);
+    //         }
+    //     }
+    // }
 
-        let tablero = document.createElement("div");
-        tablero.className = "tablero";
+    inyectarTablero() {
+        let marcoTablero = document.getElementById("marcoTablero");
 
-        for (let x = 0; x < this.#tablero.length; x++) {
-            for (let y = 0; y < this.#tablero[x].length; y++) {
-
+        for (let i = 0; i < this.#tablero.length; i++) {
+            let filaTablero = document.createElement("div");
+            filaTablero.classList.add("filaTablero");
+            filaTablero.id = "fila" + i;
+            marcoTablero.append(filaTablero);
+            
+            for (let j = 0; j < this.#tablero.length; j++) {
                 let casilla = document.createElement("div");
-                casilla.textContent = this.#tablero[x][y];
-                casilla.id = "" + f + c;
+                casilla.classList.add("casilla");
 
-                tablero.append(casilla);
-                c++;
-            };
-            f++;
-        };
-    };
+                casilla.textContent = this.#tablero[i][j];
+                casilla.id = "" + i + j;
 
-
-
-
-
-
-
-
-
-
+                filaTablero.append(casilla);
+            }
+        }
+    }
 };
-
-
-
-
-
-
-
 
 let c = new Takuzu([
     ["0", "", "", ""],
@@ -55,4 +46,4 @@ let c = new Takuzu([
     ["", "", "1", ""],
 ]);
 
-c.mostrarTablero();
+c.inyectarTablero();
