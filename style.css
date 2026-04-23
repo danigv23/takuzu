@@ -1,16 +1,115 @@
-/* {"Amber Flame":"fcba04","Inferno":"a50104","Black Cherry":"590004","Rich Mahogany":"250001","White Smoke":"f3f3f3"} */
+aside {
+    /* fondo web */
+    color: #42033dff;
+    /* color 0 */
+    color: #680e4bff;
+    /* footer */
+    color: #7c238cff;
+    /* color 1 */
+    color: #854798ff;
+    /* fondo juego */
+    color: #7c72a0ff;
+}
+
+* {
+    font-family: "Press Start 2P", system-ui;
+}
 
 body {
+    height: 100vh;
     margin: 0;
     padding: 0;
+    background-color: #42033dff;
 }
 
-.barraSuperior {
-    background-color: #590004;
-    min-height: 3rem;
+main {
+    box-sizing: content-box;
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px 1fr 100px;
+
+    grid-template-areas:
+        "header"
+        "div"
+        "footer";
+
+    gap: 10px;
+
+    width: 100vw;
+    height: 100vh;
+
 }
 
-.menuLateral {
+.logo {
+    height: 100px;
+    width: 100px;
+    position: fixed;
+    left: 50px;
+    top: 50px;
+}
+
+header {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+button {
+    height: 90px;
+    width: 500px;
+    font-size: 30px;
+    background-color: #7c238cff;
+    border: 1px #7c238cff solid;
+    border-radius: 30px;
+    box-shadow: 1px 5px 7px black;
+    color: white;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:active {
+    box-shadow: 5px 5px 17px black;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #7c238cff;
+    gap: 20px;
+    color: white;
+}
+
+footer img {
+    height: 75px;
+    width: 75px;
+}
+
+h1 {
+    margin-top: 100px;
+    color: white;
+    font-size: 55px;
+}
+
+div p {
+    color: white;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+footer a {
+    color: white;
 }
