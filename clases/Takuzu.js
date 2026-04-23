@@ -9,7 +9,7 @@ class Takuzu {
         this.#tablero = tableroElegido;
     };
 
-    crearTablero() {
+    crearTablero(elementoPadre) {
         let f = 0;
         let c = 0;
 
@@ -18,10 +18,11 @@ class Takuzu {
 
         for (let x = 0; x < this.#tablero.length; x++) {
             for (let y = 0; y < this.#tablero[x].length; y++) {
+
                 let casilla = document.createElement("div");
-                casilla.textContent = this.#tablero;
+                casilla.textContent = this.#tablero[x][y];
                 casilla.id = "" + f + c;
-                
+
                 tablero.append(casilla);
                 c++;
             };
