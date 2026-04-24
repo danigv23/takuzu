@@ -1,3 +1,57 @@
+const PETIT_1 = [
+    ["0", "", "", ""],
+    ["0", "0", "", ""],
+    ["", "", "", ""],
+    ["", "", "1", ""],
+];
+
+const PETIT_2 = [
+    ["", "", "0", ""],
+    ["1", "", "", ""],
+    ["", "", "", "1"],
+    ["", "", "1", "1"],
+];
+
+const MITJA_1 = [
+    ["", "1", "", "", "0", "1"],
+    ["", "0", "1", "", "", "0"],
+    ["", "", "", "", "", ""],
+    ["0", "1", "", "1", "0", ""],
+    ["0", "", "", "", "", ""],
+    ["", "", "", "", "0", "0"],
+];
+
+const MITJA_2 = [
+    ["", "1", "1", "", "", ""],
+    ["", "", "", "1", "0", ""],
+    ["", "", "", "", "0", ""],
+    ["", "", "", "", "", "1"],
+    ["0", "1", "", "", "", ""],
+    ["", "", "", "1", "", "1"],
+];
+
+const GRAN_1 = [
+    ["", "", "0", "0", "", "", "", ""],
+    ["0", "", "1", "", "", "0", "", ""],
+    ["", "", "", "1", "", "", "", "0"],
+    ["", "", "1", "1", "", "", "", "0"],
+    ["1", "1", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", ""],
+    ["", "", "0", "0", "", "", "1", "0"],
+    ["", "", "", "", "", "", "1", ""],
+];
+
+const GRAN_2 = [
+    ["0", "0", "", "", "", "", "0", ""],
+    ["0", "", "", "0", "", "", "", ""],
+    ["", "", "1", "", "", "", "", ""],
+    ["0", "", "", "", "1", "", "", ""],
+    ["", "0", "", "", "", "", "1", "1"],
+    ["", "", "1", "1", "", "0", "", ""],
+    ["", "", "", "", "", "", "", "0"],
+    ["", "", "", "", "", "", "1", "0"],
+];
+
 class Takuzu {
     #partidaAcabada
 
@@ -68,10 +122,10 @@ class Takuzu {
                 break;
         }
         this.actualizarEstilo(casilla.id);
-        if (this.comprobarVictoria) {
-            document.getElementById("marcoTablero").style.backgroundColor = "red";
-        } else {
+        if (this.comprobarVictoria()) {
             document.getElementById("marcoTablero").style.backgroundColor = "green";
+        } else {
+            document.getElementById("marcoTablero").style.backgroundColor = "red";
         }
     }
 
@@ -107,28 +161,31 @@ class Takuzu {
         // En cada fila y columna hay igual número de 0 y 1.
         // Comprobamos filas (tablero) y columnas (tablero transpuesto)
         for (let i = 0; i < this.#tablero.length; i++) {
-            let cont0 = 0;
-            let cont1 = 0;
+            let x0 = 0;
+            let y0 = 0;
+            let x1 = 0;
+            let y1 = 0;
 
             for (let j = 0; j < this.#tablero.length; j++) {
                 if (this.#tablero[i][j] === "1") {
-                    cont1++;
+                    x1++;
                 } else {
-                    cont0++;
+                    x0++;
                 }
 
                 if (transpuesto[i][j] === "1") {
-                    cont1++;
+                    y1++;
                 } else {
-                    cont0++;
+                    y0++;
                 }
             }
-            if (cont0 !== cont1) return false;
+            if (x0 !== x1) return false;
+            if (y0 !== y1) return false;
         }
 
         // No hay más de dos números iguales consecutivos(ni “000” ni “111”).
         for (let i = 0; i < this.#tablero.length; i++) {
-            for (let j = 0; j < array.length - 2; j++) {
+            for (let j = 0; j < this.#tablero.length - 2; j++) {
                 if (this.#tablero[i][j] === this.#tablero[i][j + 1] && this.#tablero[i][j] === this.#tablero[i][j + 2]) return false;
                 if (transpuesto[i][j] === transpuesto[i][j + 1] && transpuesto[i][j] === transpuesto[i][j + 2]) return false;
             }
@@ -145,34 +202,29 @@ class Takuzu {
             if (filas.includes(contFila)) return false;
             if (columnas.includes(contCol)) return false;
 
-            filas.append(contFila);
-            columnas.append(contCol);
+            filas.push(contFila);
+            columnas.push(contCol);
         }
 
         return true;
     }
 
     transponerTablero() {
-        let result = [];
+        let transpuesto = [];
         for (let j = 0; j < this.#tablero.length; j++) {
-            result[j] = [];
+            transpuesto[j] = [];
         }
 
-        for (let i = 0; i < rows; i++) {
-            for (let j = 0; j < cols; j++) {
-                result[j][i] = this.#tablero[i][j];
+        for (let i = 0; i < this.#tablero.length; i++) {
+            for (let j = 0; j < this.#tablero.length; j++) {
+                transpuesto[j][i] = this.#tablero[i][j];
             }
         }
 
-        return result;
+        return transpuesto;
     }
 };
 
-let c = new Takuzu([
-    ["", "", "0", ""],
-    ["1", "", "", ""],
-    ["", "", "", "1"],
-    ["", "", "1", "1"],
-]);
+let c = new Takuzu(MITJA_1);
 
 c.renderizarTablero();
