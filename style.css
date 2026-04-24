@@ -56,7 +56,7 @@ header {
     align-items: center;
 }
 
-div {
+.inicio {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -112,4 +112,32 @@ div p {
 
 footer a {
     color: white;
+}
+
+.barraSuperior {
+    background-color: #590004;
+    min-height: 3rem;
+}
+
+.menuLateral {
+    display: flex;
+    flex-direction: column;
+}
+
+.marcoTablero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.filaTablero {
+    display: flex;
+}
+
+.casilla {
+    background-color: purple;
+    min-width: 100px;
+    min-height: 100px;
+    border: 1px black solid;
 }
