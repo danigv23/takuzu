@@ -4,3 +4,4 @@ un  index.html con la estructura basica para mostrar el tablero de manera cutre 
 
 classe Takuzu en la que gestionamos la  partida
 
+INSTRUCCIONES

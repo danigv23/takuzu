@@ -13,20 +13,3 @@ function createWindow() {
 app.whenReady().then(() => {
     createWindow()
 });
-
-function mostrarInstrucciones() {
-    let div = document.getElementById("mod");
-
-    let titulo = createElement("p");
-    titulo.textContent = "Instrucciones";
-
-    div.append(titulo);
-}
-
-
-const botJugar = document.getElementById("jugar");
-const botInstrucciones = document.getElementById("instrucciones");
-
-botInstrucciones.addEventListener("click", () => {
-    mostrarInstrucciones();
-});
