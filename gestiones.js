@@ -1,3 +1,54 @@
+const tableros = [
+    [
+        ["0", "", "", ""],
+        ["0", "0", "", ""],
+        ["", "", "", ""],
+        ["", "", "1", ""],
+    ],
+    [
+        ["", "", "0", ""],
+        ["1", "", "", ""],
+        ["", "", "", "1"],
+        ["", "", "1", "1"],
+    ],
+    [
+        ["", "1", "", "", "0", "1"],
+        ["", "0", "1", "", "", "0"],
+        ["", "", "", "", "", ""],
+        ["0", "1", "", "1", "0", ""],
+        ["0", "", "", "", "", ""],
+        ["", "", "", "", "0", "0"],
+    ],
+    [
+        ["", "1", "1", "", "", ""],
+        ["", "", "", "1", "0", ""],
+        ["", "", "", "", "0", ""],
+        ["", "", "", "", "", "1"],
+        ["0", "1", "", "", "", ""],
+        ["", "", "", "1", "", "1"],
+    ],
+    [
+        ["", "", "0", "0", "", "", "", ""],
+        ["0", "", "1", "", "", "0", "", ""],
+        ["", "", "", "1", "", "", "", "0"],
+        ["", "", "1", "1", "", "", "", "0"],
+        ["1", "1", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", ""],
+        ["", "", "0", "0", "", "", "1", "0"],
+        ["", "", "", "", "", "", "1", ""],
+    ],
+    [
+        ["0", "0", "", "", "", "", "0", ""],
+        ["0", "", "", "0", "", "", "", ""],
+        ["", "", "1", "", "", "", "", ""],
+        ["0", "", "", "", "1", "", "", ""],
+        ["", "0", "", "", "", "", "1", "1"],
+        ["", "", "1", "1", "", "0", "", ""],
+        ["", "", "", "", "", "", "", "0"],
+        ["", "", "", "", "", "", "1", "0"],
+    ]
+];
+
 function mostrarInicio() {
     const contenidoDiv = document.getElementById("mod");
 
@@ -20,7 +71,11 @@ function mostrarInicio() {
     contenidoDiv.append(parrafo, botJugar, botInstrucciones);
 
     botInstrucciones.addEventListener("click", mostrarInstrucciones);
-    botJugar.addEventListener("click", mostrarTableros);
+    botJugar.addEventListener("click", () => {
+        let botTableros = mostrarTableros();
+    });
+
+    return botTableros;
 };
 
 function mostrarInstrucciones() {
@@ -69,8 +124,6 @@ function mostrarTableros() {
     textTam.className = "tamaño";
 
     contenidoDiv.append(text, textTam, textDif);
-    // const divTableros = document.createElement("div");
-    // divTableros.className = "tabDisponibles"
 
     for (let x = 0; x <= 5; x++) {
         const boton = document.createElement("button");
@@ -98,11 +151,45 @@ function mostrarTableros() {
         };
         contenidoDiv.append(boton);
     };
+
+    const botTableros = document.querySelectorAll(".tab");
+    return botTableros;
 };
 
+function crearPartida(tablero) {
+    switch (tablero) {
+        case "easy4":
+            const takuzu = new Takuzu(tableros[0]);
+            break;
+        case "hard4":
+            const takuzu = new Takuzu(tableros[1]);
+            break;
+        case "easy6":
+            const takuzu = new Takuzu(tableros[2]);
+            break;
+        case "hard6":
+            const takuzu = new Takuzu(tableros[3]);
+            break;
+        case "easy8":
+            const takuzu = new Takuzu(tableros[4]);
+            break;
+        case "ehard":
+            const takuzu = new Takuzu(tableros[5]);
+            break;
+    };
+};
+
+let tablerosDisponibles;
+
 /////////////////////////////////////////////////////////////
-document.addEventListener("DOMContentLoaded", mostrarInicio);
+document.addEventListener("DOMContentLoaded", () => {
+    tablerosDisponibles = mostrarInicio()
+});
 /////////////////////////////////////////////////////////////
 
 const logo = document.getElementById("logo");
-logo.addEventListener("click", mostrarInicio);
+logo.addEventListener("click", () => {
+    tablerosDisponibles = mostrarInicio()
+});
+
+console.log(tablerosDisponibles);
