@@ -59,27 +59,53 @@ function mostrarTableros() {
     const text = document.createElement("p");
     const textDif = document.createElement("p");
     const textTam = document.createElement("p");
-    const bot4Facil = document.createElement("button");
-    const bot4FDificil = document.createElement("button");
-    const bot6Facil = document.createElement("button");
-    const bot6FDificil = document.createElement("button");
-    const bot8Facil = document.createElement("button");
-    const bot18Dificil = document.createElement("button");
-
-    const divTableros = document.createElement("div");
 
     text.textContent = "Tableros disponibles";
     textDif.textContent = "Dificultad";
     textTam.textContent = "Tamaño";
 
-    bot4Facil.textContent = "4 x 4";
-    bot4FDificil.textContent = "4 x 4";
-    bot6Facil.textContent = "6 x 6";
-    bot6FDificil.textContent = "6 x 6";
-    bot8Facil.textContent = "8 x 8";
-    bot18Dificil.textContent = "8 x 8";
+    const divTableros = document.createElement("div");
 
-    divTableros.append(bot4Facil, bot6Facil, bot8Facil, bot4FDificil, bot6FDificil, bot18Dificil);
+    for (let x = 0; x < 6; x++) {
+        const boton = document.createElement("button");
+
+        let dificultad = "facil"
+
+        switch (x) {
+            case 0 || 3:
+                boton.textContent = `4 x 4 ${x}`;
+                break;
+
+            case 1 || 4:
+                boton.textContent = `6 x 6 ${x}`;
+                break;
+
+            case 2 || 5:
+                boton.textContent = `8 x 8 ${x}`;
+                break;
+
+        };
+
+        divTableros.append(boton);
+
+    }
+
+    // const bot4Facil = document.createElement("button");
+    // const bot4FDificil = document.createElement("button");
+    // const bot6Facil = document.createElement("button");
+    // const bot6FDificil = document.createElement("button");
+    // const bot8Facil = document.createElement("button");
+    // const bot18Dificil = document.createElement("button");
+
+    // bot4Facil.textContent = "4 x 4";
+    // bot4FDificil.textContent = "4 x 4";
+    // bot6Facil.textContent = "6 x 6";
+    // bot6FDificil.textContent = "6 x 6";
+    // bot8Facil.textContent = "8 x 8";
+    // bot18Dificil.textContent = "8 x 8";
+
+    // const divTableros = document.createElement("div");
+    // divTableros.append(bot4Facil, bot6Facil, bot8Facil, bot4FDificil, bot6FDificil, bot18Dificil);
     contenidoDiv.append(text, textTam, textDif, divTableros);
 
 };
