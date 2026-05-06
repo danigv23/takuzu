@@ -72,10 +72,12 @@ function mostrarInicio() {
 
     botInstrucciones.addEventListener("click", mostrarInstrucciones);
     botJugar.addEventListener("click", () => {
-        let botTableros = mostrarTableros();
+        mostrarTableros();
+        const opUsu = "easy4";
+        // const opUsu = eleccionTablero();
+        console.log(opUsu);
+        crearPartida(opUsu);
     });
-
-    return botTableros;
 };
 
 function mostrarInstrucciones() {
@@ -151,45 +153,63 @@ function mostrarTableros() {
         };
         contenidoDiv.append(boton);
     };
+};
 
-    const botTableros = document.querySelectorAll(".tab");
-    return botTableros;
+function eleccionTablero() {
+    const botTableros = document.getElementsByClassName(".tab");
+    console.log(botTableros);
+    let opUsuario;
+
+    for (const botTablero of botTableros) {
+        botTablero.addEventListener("click", () => {
+            opUsuario = botTablero.id;
+        });
+    };
+
+    console.log("elec" + opUsuario);
+    return opUsuario;
 };
 
 function crearPartida(tablero) {
+    const contenidoDiv = document.getElementById("mod");
+
+    while (contenidoDiv.firstChild) {
+        contenidoDiv.removeChild(contenidoDiv.firstChild);
+    };
+
+    let takuzu;
+
     switch (tablero) {
         case "easy4":
-            const takuzu = new Takuzu(tableros[0]);
+            takuzu = new Takuzu(tableros[0]);
+            takuzu.renderizarTablero();
             break;
         case "hard4":
-            const takuzu = new Takuzu(tableros[1]);
+            takuzu = new Takuzu(tableros[1]);
+            takuzu.renderizarTablero();
             break;
         case "easy6":
-            const takuzu = new Takuzu(tableros[2]);
+            takuzu = new Takuzu(tableros[2]);
+            takuzu.renderizarTablero();
             break;
         case "hard6":
-            const takuzu = new Takuzu(tableros[3]);
+            takuzu = new Takuzu(tableros[3]);
+            takuzu.renderizarTablero();
             break;
         case "easy8":
-            const takuzu = new Takuzu(tableros[4]);
+            takuzu = new Takuzu(tableros[4]);
+            takuzu.renderizarTablero();
             break;
         case "ehard":
-            const takuzu = new Takuzu(tableros[5]);
+            takuzu = new Takuzu(tableros[5]);
+            takuzu.renderizarTablero();
             break;
     };
 };
 
-let tablerosDisponibles;
-
 /////////////////////////////////////////////////////////////
-document.addEventListener("DOMContentLoaded", () => {
-    tablerosDisponibles = mostrarInicio()
-});
+document.addEventListener("DOMContentLoaded", mostrarInicio);
 /////////////////////////////////////////////////////////////
 
 const logo = document.getElementById("logo");
-logo.addEventListener("click", () => {
-    tablerosDisponibles = mostrarInicio()
-});
-
-console.log(tablerosDisponibles);
+logo.addEventListener("click", mostrarInicio);
