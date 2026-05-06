@@ -27,7 +27,7 @@ main {
     display: grid;
 
     grid-template-columns: 1fr;
-    grid-template-rows: 150px 1fr 100px;
+    grid-template-rows: 150px 1fr 48px;
 
     grid-template-areas:
         "header"
@@ -39,6 +39,8 @@ main {
     width: 100vw;
     height: 100vh;
 
+    justify-items: center;
+    align-items: center;
 }
 
 .logo {
@@ -47,6 +49,10 @@ main {
     position: fixed;
     left: 50px;
     top: 50px;
+}
+
+.logo:hover {
+    cursor: pointer;
 }
 
 header {
@@ -64,14 +70,14 @@ header {
     gap: 30px;
 }
 
-button {
+.inicio button {
     height: 90px;
     width: 500px;
     font-size: 30px;
     background-color: #7c238cff;
     border: 1px #7c238cff solid;
     border-radius: 30px;
-    box-shadow: 1px 5px 7px black;
+    box-shadow: 10px 10px 17px black;
     color: white;
 }
 
@@ -91,6 +97,8 @@ footer {
     background-color: #7c238cff;
     gap: 20px;
     color: white;
+    width: 100%;
+
 }
 
 footer img {
@@ -102,9 +110,10 @@ h1 {
     margin-top: 100px;
     color: white;
     font-size: 55px;
+    position: fixed;
 }
 
-div p {
+.inicio p {
     color: white;
     font-size: 20px;
     margin-top: 50px;
@@ -114,30 +123,103 @@ footer a {
     color: white;
 }
 
-.barraSuperior {
-    background-color: #590004;
-    min-height: 3rem;
+.instrucciones {
+    box-sizing: content-box;
+    height: 400px;
+    width: 650px;
+    border: 10px solid #854798ff;
+    padding: 45px;
+    color: white;
+    border-radius: 26px;
+    line-height: 23px;
 }
 
-.menuLateral {
-    display: flex;
-    flex-direction: column;
+.boton {
+    display: none;
 }
 
-.marcoTablero {
+.tableros {
+    display: grid;
+
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    grid-template-rows: 70px 1fr 1fr;
+
+    grid-template-areas:
+        "text tamano tamano tamano"
+        "dificultad easy4 easy6 easy8"
+        "dificultad hard4 hard6 hard8";
+
+    gap: 35px;
+}
+
+.texto {
+    grid-area: text;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-top: 2rem;
 }
 
-.filaTablero {
+.tamaño {
+    grid-area: tamano;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.casilla {
-    background-color: purple;
-    min-width: 100px;
-    min-height: 100px;
-    border: 1px black solid;
+.dificultad {
+    grid-area: dificultad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#easy4 {
+    grid-area: easy4;
+}
+
+#hard4 {
+    grid-area: hard4;
+}
+
+#easy6 {
+    grid-area: easy6;
+}
+
+#hard6 {
+    grid-area: hard6;
+}
+
+#easy8 {
+    grid-area: easy8;
+}
+
+#hard8 {
+    grid-area: hard8;
+}
+
+.tableros button {
+    width: 250px;
+    height: 90px;
+}
+
+.tableros p {
+    color: white;
+    font-size: 20px;
+}
+
+.tab {
+    height: 90px;
+    width: 500px;
+    font-size: 30px;
+    background-color: #7c238cff;
+    border: 1px #7c238cff solid;
+    border-radius: 30px;
+    box-shadow: 10px 10px 17px black;
+    color: white;
+}
+
+.tableros {
+    border: 10px solid #854798ff;
+    padding: 70px;
+    border-radius: 26px;
 }
