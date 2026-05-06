@@ -137,3 +137,16 @@ footer a {
 .boton {
     display: none;
 }
+
+.tableros{
+    display: grid;
+
+    grid-template-columns: 300px 1fr 1fr 1fr;
+    grid-template-rows: 200px 200px 200px;
+
+    /* grid-area: ; */
+}
+
+/* .tableros button{
+
+} */
