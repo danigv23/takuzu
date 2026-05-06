@@ -52,45 +52,52 @@ function mostrarInstrucciones() {
 
 function mostrarTableros() {
     const contenidoDiv = document.getElementById("mod");
+    contenidoDiv.className = "tableros";
 
     while (contenidoDiv.firstChild) {
         contenidoDiv.removeChild(contenidoDiv.firstChild);
     };
 
-    contenidoDiv.className = "tableros";
-
     const text = document.createElement("p");
     const textDif = document.createElement("p");
     const textTam = document.createElement("p");
-    text.textContent = "Tableros disponibles";
+    text.textContent = "Tableros";
     textDif.textContent = "Dificultad";
     textTam.textContent = "Tamaño";
+    text.className = "texto";
+    textDif.className = "dificultad";
+    textTam.className = "tamaño";
 
-    const divTableros = document.createElement("div");
+    contenidoDiv.append(text, textTam, textDif);
+    // const divTableros = document.createElement("div");
+    // divTableros.className = "tabDisponibles"
 
     for (let x = 0; x <= 5; x++) {
         const boton = document.createElement("button");
+        boton.className = "tab";
 
-        (x < 3) ? boton.className = "easy" : boton.className = "hard";
+        let dif = "hard";
+        if (x < 3) dif = "easy";
 
         switch (x) {
             case 0:
             case 3:
                 boton.textContent = "4 x 4";
+                boton.id = `${dif}4`;
                 break;
             case 1:
             case 4:
                 boton.textContent = "6 x 6";
+                boton.id = `${dif}6`;
                 break;
             case 2:
             case 5:
                 boton.textContent = "8 x 8";
+                boton.id = `${dif}8`;
                 break;
         };
-        divTableros.append(boton);
+        contenidoDiv.append(boton);
     };
-
-    contenidoDiv.append(text, textTam, textDif, divTableros);
 };
 
 /////////////////////////////////////////////////////////////
