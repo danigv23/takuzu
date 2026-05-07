@@ -97,11 +97,6 @@ class Takuzu {
                 casilla.style.backgroundColor = "#854798ff";
                 break;
         }
-
-        // Estil especial per a caselles bloquejades (pista)
-        if (this.#posicionesBloq.includes(id)) {
-            casilla.style.outline = "3px solid #7c72a0ff";
-        }
     }
 
     comprobarVictoria() {

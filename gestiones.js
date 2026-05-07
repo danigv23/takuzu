@@ -74,7 +74,6 @@ function mostrarInicio() {
     botInstrucciones.addEventListener("click", mostrarInstrucciones);
     botJugar.addEventListener("click", () => {
         mostrarTableros();
-        eleccionTablero();
     });
 };
 
@@ -169,6 +168,8 @@ function mostrarTableros() {
         boton.textContent = `${size} x ${size}`;
         contenidoDiv.append(boton);
     };
+
+    eleccionTablero();
 };
 
 function eleccionTablero() {
