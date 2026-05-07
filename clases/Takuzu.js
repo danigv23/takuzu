@@ -25,9 +25,17 @@ class Takuzu {
         }
     };
 
-    renderizarTablero() {
+    renderizarTablero(mostarVista) {
         let marcoTablero = document.getElementById("mod");
         marcoTablero.className = "tablero";
+
+        if (this.#tablero.length == 4) {
+            marcoTablero.classList.add("small");
+        } else if (this.#tablero.length == 6) {
+            marcoTablero.classList.add("medium");
+        } else {
+            marcoTablero.classList.add("big");
+        };
 
         for (let i = 0; i < this.#tablero.length; i++) {
             let filaTablero = document.createElement("div");
@@ -46,14 +54,14 @@ class Takuzu {
                 this.actualizarEstilo(casilla.id);
 
                 casilla.addEventListener("click", () => {
-                    this.rotarCasilla(casilla.id)
+                    this.rotarCasilla(casilla.id, mostarVista)
                 }
                 );
             }
         }
     }
 
-    rotarCasilla(id) {
+    rotarCasilla(id, mostarVista) {
         let casilla = document.getElementById(id);
         let pos = id.split(";");
         let x = pos[0];
@@ -72,12 +80,15 @@ class Takuzu {
                 break;
         }
         this.actualizarEstilo(casilla.id);
-        if (this.checkFull()){
+        if (this.checkFull()) {
             this.#tableroFull = true;
+            let estado = this.comprobarVictoria();
+            mostarVista(estado);
         } else {
             this.#tableroFull = false;
         }
     }
+
 
     actualizarEstilo(id) {
         let casilla = document.getElementById(id);
@@ -99,26 +110,25 @@ class Takuzu {
     }
 
     comprobarVictoria() {
-        const ERROR_FULL = 1;
-        const ERROR_EQUAL = 2;
-        const ERROR_THREE = 3;
-        const ERROR_IDENTICAL = 4;
+        const ERROR_EQUAL = 1;
+        const ERROR_THREE = 2;
+        const ERROR_IDENTICAL = 3;
         const OK = 0;
 
-        if (!this.checkFull()){
+        if (!this.checkFull()) {
             return;
-        } else if (!this.checkEqual()){
+        } else if (!this.checkEqual()) {
             return ERROR_EQUAL;
-        } else if (!this.checkLessThanThree()){
+        } else if (!this.checkLessThanThree()) {
             return ERROR_THREE;
-        } else if (!this.checkIdentical()){
+        } else if (!this.checkIdentical()) {
             return ERROR_IDENTICAL;
         } else {
             return OK;
-        }
-    }
+        };
+    };
 
-    checkFull(){
+    checkFull() {
         // Todas las casillas están llenas(sin huecos).
         for (let i = 0; i < this.#tablero.length; i++) {
             for (let j = 0; j < this.#tablero.length; j++) {
@@ -128,7 +138,7 @@ class Takuzu {
         return true;
     }
 
-    checkEqual(){
+    checkEqual() {
         let transpuesto = this.transponerTablero();
 
         // En cada fila y columna hay igual número de 0 y 1.
@@ -158,7 +168,9 @@ class Takuzu {
         return true;
     }
 
-    checkLessThanThree(){
+    checkLessThanThree() {
+        let transpuesto = this.transponerTablero();
+
         // No hay más de dos números iguales consecutivos(ni “000” ni “111”).
         for (let i = 0; i < this.#tablero.length; i++) {
             for (let j = 0; j < this.#tablero.length - 2; j++) {
@@ -168,7 +180,9 @@ class Takuzu {
         }
         return true;
     }
-    checkIdentical(){
+    checkIdentical() {
+        let transpuesto = this.transponerTablero();
+
         // No hay filas ni columnas idénticas entre sí.
         let filas = [];
         let columnas = [];
@@ -197,8 +211,8 @@ class Takuzu {
             for (let j = 0; j < this.#tablero.length; j++) {
                 transpuesto[j][i] = this.#tablero[i][j];
             }
-        }
+        };
 
         return transpuesto;
-    }
+    };
 };

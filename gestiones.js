@@ -192,7 +192,38 @@ function crearPartida(tablero) {
             takuzu = new Takuzu(tableros[5]);
             break;
     };
-    takuzu.renderizarTablero();
+    takuzu.renderizarTablero(mostarVista);
+
+    function mostarVista(estado) {
+        let mensajeErr;
+
+        switch (estado) {
+
+            case 0:
+                mensajeErr = "Ganaste.";
+                break;
+            case 1:
+                mensajeErr = "Existe una fila o columna con un numero diferente de unos que ceros.";
+                break;
+            case 2:
+                mensajeErr = "Existen una fila o columna con 3 unos o ceros seguidos.";
+                break;
+            case 3:
+                mensajeErr = "Existen dos filas o columnas iguales.";
+                break;
+        };
+        console.log(mensajeErr)
+    }
+
+
+    // estado = takuzu.comprobarVictoria();
+    // let mensajeErr;
+
+    // if (estado !== 1) {
+
+    //     contenidoDiv.appendChild(mensajeErr);
+    // };
+
 };
 
 //////////////////////////////////////////////////////////////
