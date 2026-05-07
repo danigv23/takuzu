@@ -149,13 +149,35 @@ class Takuzu {
     }
 
     comprobarVictoria() {
+        const ERROR_FULL = 1;
+        const ERROR_EQUAL = 2;
+        const ERROR_THREE = 3;
+        const ERROR_IDENTICAL = 4;
+        const OK = 0;
+
+        if (!this.checkFull()){
+            return ERROR_FULL;
+        } else if (!this.checkEqual()){
+            return ERROR_EQUAL;
+        } else if (!this.checkLessThanThree()){
+            return ERROR_THREE;
+        } else if (!this.checkIdentical()){
+            return ERROR_IDENTICAL;
+        } else {
+            return OK;
+        }
+    }
+
+    checkFull(){
         // Todas las casillas están llenas(sin huecos).
         for (let i = 0; i < this.#tablero.length; i++) {
             for (let j = 0; j < this.#tablero.length; j++) {
                 if (this.#tablero[i][j] === "") return false;
             }
         }
+    }
 
+    checkEqual(){
         let transpuesto = this.transponerTablero();
 
         // En cada fila y columna hay igual número de 0 y 1.
@@ -182,7 +204,9 @@ class Takuzu {
             if (x0 !== x1) return false;
             if (y0 !== y1) return false;
         }
+    }
 
+    checkLessThanThree(){
         // No hay más de dos números iguales consecutivos(ni “000” ni “111”).
         for (let i = 0; i < this.#tablero.length; i++) {
             for (let j = 0; j < this.#tablero.length - 2; j++) {
@@ -190,7 +214,8 @@ class Takuzu {
                 if (transpuesto[i][j] === transpuesto[i][j + 1] && transpuesto[i][j] === transpuesto[i][j + 2]) return false;
             }
         }
-
+    }
+    checkIdentical(){
         // No hay filas ni columnas idénticas entre sí.
         let filas = [];
         let columnas = [];
@@ -209,6 +234,7 @@ class Takuzu {
         return true;
     }
 
+
     transponerTablero() {
         let transpuesto = [];
         for (let j = 0; j < this.#tablero.length; j++) {
@@ -225,6 +251,6 @@ class Takuzu {
     }
 };
 
-let c = new Takuzu(MITJA_1);
+let c = new Takuzu(PETIT_2);
 
 c.renderizarTablero();
