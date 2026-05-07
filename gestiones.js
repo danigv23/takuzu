@@ -73,10 +73,7 @@ function mostrarInicio() {
     botInstrucciones.addEventListener("click", mostrarInstrucciones);
     botJugar.addEventListener("click", () => {
         mostrarTableros();
-        const opUsu = "easy4";
-        // const opUsu = eleccionTablero();
-        console.log(opUsu);
-        crearPartida(opUsu);
+        eleccionTablero();
     });
 };
 
@@ -109,7 +106,7 @@ function mostrarInstrucciones() {
 
 function mostrarTableros() {
     const contenidoDiv = document.getElementById("mod");
-    contenidoDiv.className = "tableros";
+    contenidoDiv.className = "tablerosDisp";
 
     while (contenidoDiv.firstChild) {
         contenidoDiv.removeChild(contenidoDiv.firstChild);
@@ -156,18 +153,14 @@ function mostrarTableros() {
 };
 
 function eleccionTablero() {
-    const botTableros = document.getElementsByClassName(".tab");
-    console.log(botTableros);
+    const botTableros = document.getElementsByClassName("tab");
     let opUsuario;
 
     for (const botTablero of botTableros) {
         botTablero.addEventListener("click", () => {
-            opUsuario = botTablero.id;
+            crearPartida(botTablero.id);
         });
     };
-
-    console.log("elec" + opUsuario);
-    return opUsuario;
 };
 
 function crearPartida(tablero) {
@@ -182,29 +175,24 @@ function crearPartida(tablero) {
     switch (tablero) {
         case "easy4":
             takuzu = new Takuzu(tableros[0]);
-            takuzu.renderizarTablero();
             break;
         case "hard4":
             takuzu = new Takuzu(tableros[1]);
-            takuzu.renderizarTablero();
             break;
         case "easy6":
             takuzu = new Takuzu(tableros[2]);
-            takuzu.renderizarTablero();
             break;
         case "hard6":
             takuzu = new Takuzu(tableros[3]);
-            takuzu.renderizarTablero();
             break;
         case "easy8":
             takuzu = new Takuzu(tableros[4]);
-            takuzu.renderizarTablero();
             break;
-        case "ehard":
+        case "hard8":
             takuzu = new Takuzu(tableros[5]);
-            takuzu.renderizarTablero();
             break;
     };
+    takuzu.renderizarTablero();
 };
 
 /////////////////////////////////////////////////////////////

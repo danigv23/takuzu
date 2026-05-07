@@ -3,10 +3,10 @@ aside {
     color: #42033dff;
     /* color 0 */
     color: #680e4bff;
-    /* footer */
-    color: #7c238cff;
     /* color 1 */
     color: #854798ff;
+    /* footer */
+    color: #7c238cff;
     /* fondo juego */
     color: #7c72a0ff;
 }
@@ -138,7 +138,7 @@ footer a {
     display: none;
 }
 
-.tableros {
+.tablerosDisp {
     display: grid;
 
     grid-template-columns: 200px 1fr 1fr 1fr;
@@ -197,12 +197,12 @@ footer a {
     grid-area: hard8;
 }
 
-.tableros button {
+.tablerosDisp button {
     width: 250px;
     height: 90px;
 }
 
-.tableros p {
+.tablerosDisp p {
     color: white;
     font-size: 20px;
 }
@@ -218,18 +218,21 @@ footer a {
     color: white;
 }
 
-.tableros {
-    border: 10px solid #854798ff;
+.tablero {
+    border: 10px solid #7c238cff;
+    border-radius: 20px;
+    background-color: black;
+}
+
+.tablerosDisp {
+    border: 10px solid #7c238cff;
+    border-radius: 20px;
     padding: 70px;
-    border-radius: 26px;
 }
 
 
 /* ////////////// ADRIAN ////////// */
-/* body {
-    margin: 0;
-    padding: 0;
-}
+
 
 .barraSuperior {
     background-color: #590004;
@@ -257,4 +260,5 @@ footer a {
     min-width: 100px;
     min-height: 100px;
     border: 1px black solid;
-} */
+    border-radius: 20px;
+}
