@@ -195,7 +195,19 @@ function crearPartida(tablero) {
     takuzu.renderizarTablero();
 
     do {
-        contenidoDiv.appendChild();
+        let estado = takuzu.comprobarVictoria();
+
+        const errNum = "Existe una fila o columna con un numero diferente de unos que ceros.";
+        const errThree = "Existen una fila o columna con 3 unos o ceros seguidos.";
+        const errIgual = "Existen dos filas o columnas iguales.";
+
+        if (estado !== 1) {
+
+            
+
+            contenidoDiv.appendChild();
+        };
+
     } while (takuzu.comprobarVictoria() === 0);
 };
 
