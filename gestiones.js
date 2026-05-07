@@ -196,16 +196,22 @@ function crearPartida(tablero) {
 
     do {
         let estado = takuzu.comprobarVictoria();
-
-        const errNum = "Existe una fila o columna con un numero diferente de unos que ceros.";
-        const errThree = "Existen una fila o columna con 3 unos o ceros seguidos.";
-        const errIgual = "Existen dos filas o columnas iguales.";
+        const mensajeErr;
 
         if (estado !== 1) {
+            switch (estado) {
+                case 2:
+                    mensajeErr = "Existe una fila o columna con un numero diferente de unos que ceros.";
+                    break;
+                case 3:
+                    mensajeErr = "Existen una fila o columna con 3 unos o ceros seguidos.";
+                    break;
+                case 4:
+                    mensajeErr = "Existen dos filas o columnas iguales.";
+                    break;
+            };
 
-            
-
-            contenidoDiv.appendChild();
+            contenidoDiv.appendChild(mensajeErr);
         };
 
     } while (takuzu.comprobarVictoria() === 0);
