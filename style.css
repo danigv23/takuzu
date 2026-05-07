@@ -3,10 +3,10 @@ aside {
     color: #42033dff;
     /* color 0 */
     color: #680e4bff;
-    /* footer */
-    color: #7c238cff;
     /* color 1 */
     color: #854798ff;
+    /* footer */
+    color: #7c238cff;
     /* fondo juego */
     color: #7c72a0ff;
 }
@@ -138,16 +138,17 @@ footer a {
     display: none;
 }
 
-.tableros {
+.tablerosDisp {
     display: grid;
 
     grid-template-columns: 200px 1fr 1fr 1fr;
-    grid-template-rows: 70px 1fr 1fr;
+    grid-template-rows: 70px 1fr 1fr 1fr;
 
     grid-template-areas:
         "text tamano tamano tamano"
-        "dificultad easy4 easy6 easy8"
-        "dificultad hard4 hard6 hard8";
+        "facil easy4 easy6 easy8"
+        "dificil hard4 hard6 hard8"
+        "aleatorio random4 random6 random8";
 
     gap: 35px;
 }
@@ -166,8 +167,22 @@ footer a {
     align-items: center;
 }
 
-.dificultad {
-    grid-area: dificultad;
+.facil {
+    grid-area: facil;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dificil {
+    grid-area: dificil;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aleatorio {
+    grid-area: aleatorio;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,12 +212,24 @@ footer a {
     grid-area: hard8;
 }
 
-.tableros button {
+#random4 {
+    grid-area: random4;
+}
+
+#random6 {
+    grid-area: random6;
+}
+
+#random8 {
+    grid-area: random8;
+}
+
+.tablerosDisp button {
     width: 250px;
     height: 90px;
 }
 
-.tableros p {
+.tablerosDisp p {
     color: white;
     font-size: 20px;
 }
@@ -218,18 +245,21 @@ footer a {
     color: white;
 }
 
-.tableros {
-    border: 10px solid #854798ff;
+.tablero {
+    border: 10px solid #7c238cff;
+    border-radius: 20px;
+    background-color: black;
+}
+
+.tablerosDisp {
+    border: 10px solid #7c238cff;
+    border-radius: 20px;
     padding: 70px;
-    border-radius: 26px;
 }
 
 
 /* ////////////// ADRIAN ////////// */
-/* body {
-    margin: 0;
-    padding: 0;
-}
+
 
 .barraSuperior {
     background-color: #590004;
@@ -257,4 +287,5 @@ footer a {
     min-width: 100px;
     min-height: 100px;
     border: 1px black solid;
-} */
+    border-radius: 20px;
+}
