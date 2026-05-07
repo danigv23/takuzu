@@ -193,6 +193,10 @@ function crearPartida(tablero) {
             break;
     };
     takuzu.renderizarTablero();
+
+    do {
+        contenidoDiv.appendChild();
+    } while (takuzu.comprobarVictoria() === 0);
 };
 
 /////////////////////////////////////////////////////////////

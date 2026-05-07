@@ -26,6 +26,14 @@ class Takuzu {
         let marcoTablero = document.getElementById("mod");
         marcoTablero.className = "tablero";
 
+        if (this.#tablero.length == 4) {
+            marcoTablero.classList.add("small");
+        } else if (this.#tablero.length == 6) {
+            marcoTablero.classList.add("medium");
+        } else {
+            marcoTablero.classList.add("big");
+        };
+
         for (let i = 0; i < this.#tablero.length; i++) {
             let filaTablero = document.createElement("div");
             filaTablero.classList.add("filaTablero");
@@ -166,8 +174,8 @@ class Takuzu {
             for (let j = 0; j < this.#tablero.length; j++) {
                 transpuesto[j][i] = this.#tablero[i][j];
             }
-        }
+        };
 
         return transpuesto;
-    }
+    };
 };
