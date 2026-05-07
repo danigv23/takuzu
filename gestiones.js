@@ -194,9 +194,10 @@ function crearPartida(tablero) {
     };
     takuzu.renderizarTablero();
 
+    let estado;
     do {
-        let estado = takuzu.comprobarVictoria();
-        const mensajeErr;
+        estado = takuzu.comprobarVictoria();
+        let mensajeErr;
 
         if (estado !== 1) {
             switch (estado) {
@@ -214,7 +215,7 @@ function crearPartida(tablero) {
             contenidoDiv.appendChild(mensajeErr);
         };
 
-    } while (takuzu.comprobarVictoria() === 0);
+    } while (estado !== 0);
 };
 
 /////////////////////////////////////////////////////////////

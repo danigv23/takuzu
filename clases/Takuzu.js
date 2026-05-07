@@ -130,6 +130,7 @@ class Takuzu {
                 if (this.#tablero[i][j] === "") return false;
             }
         }
+        return true;
     }
 
     checkEqual() {
@@ -159,6 +160,7 @@ class Takuzu {
             if (x0 !== x1) return false;
             if (y0 !== y1) return false;
         }
+        return true;
     }
 
     checkLessThanThree() {
@@ -169,6 +171,7 @@ class Takuzu {
                 if (transpuesto[i][j] === transpuesto[i][j + 1] && transpuesto[i][j] === transpuesto[i][j + 2]) return false;
             }
         }
+        return true;
     }
     checkIdentical() {
         // No hay filas ni columnas idénticas entre sí.
@@ -185,7 +188,6 @@ class Takuzu {
             filas.push(contFila);
             columnas.push(contCol);
         }
-
         return true;
     }
 
