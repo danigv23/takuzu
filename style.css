@@ -230,10 +230,6 @@ footer a {
     padding: 70px;
 }
 
-
-/* ////////////// ADRIAN ////////// */
-
-
 .barraSuperior {
     background-color: #590004;
     min-height: 3rem;
@@ -257,8 +253,15 @@ footer a {
 
 .casilla {
     background-color: purple;
-    min-width: 100px;
-    min-height: 100px;
+    min-width: 80px;
+    min-height: 80px;
     border: 1px black solid;
-    border-radius: 20px;
+    border-radius: 15px;
 }
+
+
+/* 
+4x4 150 
+6x6 100
+8x8 80
+*/
