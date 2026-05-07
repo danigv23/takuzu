@@ -2,11 +2,14 @@ class Takuzu {
     #partidaAcabada
 
     #tablero
+    #tableroFull
 
     #posicionesBloq
 
     constructor(tableroElegido) {
         this.#partidaAcabada = false;
+
+        this.#tableroFull = false;
 
         this.#tablero = tableroElegido;
 
@@ -69,10 +72,10 @@ class Takuzu {
                 break;
         }
         this.actualizarEstilo(casilla.id);
-        if (this.comprobarVictoria()) {
-            document.getElementById("marcoTablero").style.backgroundColor = "green";
+        if (this.checkFull()){
+            this.#tableroFull = true;
         } else {
-            document.getElementById("marcoTablero").style.backgroundColor = "red";
+            this.#tableroFull = false;
         }
     }
 
@@ -103,7 +106,7 @@ class Takuzu {
         const OK = 0;
 
         if (!this.checkFull()){
-            return ERROR_FULL;
+            return;
         } else if (!this.checkEqual()){
             return ERROR_EQUAL;
         } else if (!this.checkLessThanThree()){
@@ -122,6 +125,7 @@ class Takuzu {
                 if (this.#tablero[i][j] === "") return false;
             }
         }
+        return true;
     }
 
     checkEqual(){
@@ -151,6 +155,7 @@ class Takuzu {
             if (x0 !== x1) return false;
             if (y0 !== y1) return false;
         }
+        return true;
     }
 
     checkLessThanThree(){
@@ -161,6 +166,7 @@ class Takuzu {
                 if (transpuesto[i][j] === transpuesto[i][j + 1] && transpuesto[i][j] === transpuesto[i][j + 2]) return false;
             }
         }
+        return true;
     }
     checkIdentical(){
         // No hay filas ni columnas idénticas entre sí.
@@ -177,7 +183,6 @@ class Takuzu {
             filas.push(contFila);
             columnas.push(contCol);
         }
-
         return true;
     }
 
