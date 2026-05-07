@@ -1,10 +1,10 @@
-const { app, BrowserWindow } = require('electron');
+import { app, BrowserWindow } from './node_modules/electron';
 
 function createWindow() {
     // Creem una nova finestra especificant les seves dimensions
     const win = new BrowserWindow({
-        width: 800,
-        height: 600
+        width: 1400,
+        height: 800
     });
     // Carreguem l'arxiu inicial de la nostra aplicació web
     win.loadFile('index.html');

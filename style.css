@@ -1,9 +1,238 @@
-/* {"Amber Flame":"fcba04","Inferno":"a50104","Black Cherry":"590004","Rich Mahogany":"250001","White Smoke":"f3f3f3"} */
+aside {
+    /* fondo web */
+    color: #42033dff;
+    /* color 0 */
+    color: #680e4bff;
+    /* color 1 */
+    color: #854798ff;
+    /* footer */
+    color: #7c238cff;
+    /* fondo juego */
+    color: #7c72a0ff;
+}
+
+* {
+    font-family: "Press Start 2P", system-ui;
+}
 
 body {
+    height: 100vh;
     margin: 0;
     padding: 0;
+    background-color: #42033dff;
 }
+
+main {
+    box-sizing: content-box;
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px 1fr 48px;
+
+    grid-template-areas:
+        "header"
+        "div"
+        "footer";
+
+    gap: 10px;
+
+    width: 100vw;
+    height: 100vh;
+
+    justify-items: center;
+    align-items: center;
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+    position: fixed;
+    left: 50px;
+    top: 50px;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inicio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.inicio button {
+    height: 90px;
+    width: 500px;
+    font-size: 30px;
+    background-color: #7c238cff;
+    border: 1px #7c238cff solid;
+    border-radius: 30px;
+    box-shadow: 10px 10px 17px black;
+    color: white;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:active {
+    box-shadow: 5px 5px 17px black;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #7c238cff;
+    gap: 20px;
+    color: white;
+    width: 100%;
+
+}
+
+footer img {
+    height: 75px;
+    width: 75px;
+}
+
+h1 {
+    margin-top: 100px;
+    color: white;
+    font-size: 55px;
+    position: fixed;
+}
+
+.inicio p {
+    color: white;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+footer a {
+    color: white;
+}
+
+.instrucciones {
+    box-sizing: content-box;
+    height: 400px;
+    width: 650px;
+    border: 10px solid #854798ff;
+    padding: 45px;
+    color: white;
+    border-radius: 26px;
+    line-height: 23px;
+}
+
+.boton {
+    display: none;
+}
+
+.tablerosDisp {
+    display: grid;
+
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    grid-template-rows: 70px 1fr 1fr;
+
+    grid-template-areas:
+        "text tamano tamano tamano"
+        "dificultad easy4 easy6 easy8"
+        "dificultad hard4 hard6 hard8";
+
+    gap: 35px;
+}
+
+.texto {
+    grid-area: text;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tamaño {
+    grid-area: tamano;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dificultad {
+    grid-area: dificultad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#easy4 {
+    grid-area: easy4;
+}
+
+#hard4 {
+    grid-area: hard4;
+}
+
+#easy6 {
+    grid-area: easy6;
+}
+
+#hard6 {
+    grid-area: hard6;
+}
+
+#easy8 {
+    grid-area: easy8;
+}
+
+#hard8 {
+    grid-area: hard8;
+}
+
+.tablerosDisp button {
+    width: 250px;
+    height: 90px;
+}
+
+.tablerosDisp p {
+    color: white;
+    font-size: 20px;
+}
+
+.tab {
+    height: 90px;
+    width: 500px;
+    font-size: 30px;
+    background-color: #7c238cff;
+    border: 1px #7c238cff solid;
+    border-radius: 30px;
+    box-shadow: 10px 10px 17px black;
+    color: white;
+}
+
+.tablero {
+    border: 10px solid #7c238cff;
+    border-radius: 20px;
+    background-color: black;
+}
+
+.tablerosDisp {
+    border: 10px solid #7c238cff;
+    border-radius: 20px;
+    padding: 70px;
+}
+
+
+/* ////////////// ADRIAN ////////// */
+
 
 .barraSuperior {
     background-color: #590004;
@@ -31,4 +260,5 @@ body {
     min-width: 100px;
     min-height: 100px;
     border: 1px black solid;
+    border-radius: 20px;
 }
