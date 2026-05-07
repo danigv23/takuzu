@@ -142,12 +142,13 @@ footer a {
     display: grid;
 
     grid-template-columns: 200px 1fr 1fr 1fr;
-    grid-template-rows: 70px 1fr 1fr;
+    grid-template-rows: 70px 1fr 1fr 1fr;
 
     grid-template-areas:
         "text tamano tamano tamano"
-        "dificultad easy4 easy6 easy8"
-        "dificultad hard4 hard6 hard8";
+        "facil easy4 easy6 easy8"
+        "dificil hard4 hard6 hard8"
+        "aleatorio random4 random6 random8";
 
     gap: 35px;
 }
@@ -166,8 +167,22 @@ footer a {
     align-items: center;
 }
 
-.dificultad {
-    grid-area: dificultad;
+.facil {
+    grid-area: facil;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dificil {
+    grid-area: dificil;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aleatorio {
+    grid-area: aleatorio;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -195,6 +210,18 @@ footer a {
 
 #hard8 {
     grid-area: hard8;
+}
+
+#random4 {
+    grid-area: random4;
+}
+
+#random6 {
+    grid-area: random6;
+}
+
+#random8 {
+    grid-area: random8;
 }
 
 .tablerosDisp button {

@@ -113,16 +113,22 @@ function mostrarTableros() {
     };
 
     const text = document.createElement("p");
-    const textDif = document.createElement("p");
+    const textFacil = document.createElement("p");
+    const textDificil = document.createElement("p");
+    const textAleatorio = document.createElement("p");
     const textTam = document.createElement("p");
     text.textContent = "Tableros";
-    textDif.textContent = "Dificultad";
+    textFacil.textContent = "Fácil";
+    textDificil.textContent = "Difícil";
+    textAleatorio.textContent = "Aleatorio";
     textTam.textContent = "Tamaño";
     text.className = "texto";
-    textDif.className = "dificultad";
+    textFacil.className = "facil";
+    textDificil.className = "dificil";
+    textAleatorio.className = "aleatorio";
     textTam.className = "tamaño";
 
-    contenidoDiv.append(text, textTam, textDif);
+    contenidoDiv.append(text, textTam, textFacil, textDificil, textAleatorio);
 
     for (let x = 0; x <= 5; x++) {
         const boton = document.createElement("button");
@@ -148,6 +154,16 @@ function mostrarTableros() {
                 boton.id = `${dif}8`;
                 break;
         };
+        contenidoDiv.append(boton);
+    };
+
+    // Botones aleatorios
+    const sizes = [4, 6, 8];
+    for (const size of sizes) {
+        const boton = document.createElement("button");
+        boton.className = "tab";
+        boton.id = `random${size}`;
+        boton.textContent = `${size} x ${size}`;
         contenidoDiv.append(boton);
     };
 };
@@ -191,6 +207,15 @@ function crearPartida(tablero) {
         case "hard8":
             takuzu = new Takuzu(tableros[5]);
             break;
+        case "random4":
+            takuzu = new Takuzu(generarTableroAleatorio(4));
+            break;
+        case "random6":
+            takuzu = new Takuzu(generarTableroAleatorio(6));
+            break;
+        case "random8":
+            takuzu = new Takuzu(generarTableroAleatorio(8));
+            break;
     };
     takuzu.renderizarTablero();
 };
@@ -201,3 +226,90 @@ document.addEventListener("DOMContentLoaded", mostrarInicio);
 
 const logo = document.getElementById("logo");
 logo.addEventListener("click", mostrarInicio);
+
+// ── Generador de tableros aleatorios ─────────────────────────────────────────
+
+function generarTableroAleatorio(size) {
+    const solucion = Array.from({ length: size }, () => Array(size).fill(""));
+    if (!_resolverAleatorio(solucion, size)) return null;
+
+    const celdas = [];
+    for (let i = 0; i < size; i++)
+        for (let j = 0; j < size; j++)
+            celdas.push([i, j]);
+
+    _shuffle(celdas);
+    const eliminar = Math.floor(size * size * 0.52);
+    for (let k = 0; k < eliminar; k++) {
+        solucion[celdas[k][0]][celdas[k][1]] = "";
+    }
+    return solucion;
+}
+
+function _resolverAleatorio(tablero, size) {
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+            if (tablero[i][j] === "") {
+                const vals = Math.random() < 0.5 ? ["0", "1"] : ["1", "0"];
+                for (const v of vals) {
+                    tablero[i][j] = v;
+                    if (_movimientoValido(tablero, size, i, j) && _resolverAleatorio(tablero, size)) return true;
+                    tablero[i][j] = "";
+                }
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+function _movimientoValido(tablero, size, row, col) {
+    const fila = tablero[row];
+
+    for (let j = 0; j <= size - 3; j++) {
+        if (fila[j] !== "" && fila[j] === fila[j+1] && fila[j+1] !== "" &&
+            fila[j] === fila[j+2] && fila[j+2] !== "") return false;
+    }
+    for (let i = 0; i <= size - 3; i++) {
+        if (tablero[i][col] !== "" && tablero[i][col] === tablero[i+1][col] &&
+            tablero[i+1][col] !== "" && tablero[i][col] === tablero[i+2][col] &&
+            tablero[i+2][col] !== "") return false;
+    }
+
+    const c0 = fila.filter(v => v === "0").length;
+    const c1 = fila.filter(v => v === "1").length;
+    if (c0 > size / 2 || c1 > size / 2) return false;
+
+    let col0 = 0, col1 = 0;
+    for (let i = 0; i < size; i++) {
+        if (tablero[i][col] === "0") col0++;
+        if (tablero[i][col] === "1") col1++;
+    }
+    if (col0 > size / 2 || col1 > size / 2) return false;
+
+    if (!fila.includes("")) {
+        const filaStr = fila.join(",");
+        for (let i = 0; i < size; i++) {
+            if (i !== row && !tablero[i].includes("") && tablero[i].join(",") === filaStr) return false;
+        }
+    }
+
+    const colArr = tablero.map(r => r[col]);
+    if (!colArr.includes("")) {
+        const colStr = colArr.join(",");
+        for (let j = 0; j < size; j++) {
+            if (j !== col) {
+                const otraCol = tablero.map(r => r[j]);
+                if (!otraCol.includes("") && otraCol.join(",") === colStr) return false;
+            }
+        }
+    }
+    return true;
+}
+
+function _shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+}
