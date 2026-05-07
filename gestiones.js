@@ -50,6 +50,7 @@ const tableros = [
 ];
 
 function mostrarInicio() {
+    _btnVolver(false);
     const contenidoDiv = document.getElementById("mod");
 
     while (contenidoDiv.firstChild) {
@@ -78,6 +79,7 @@ function mostrarInicio() {
 };
 
 function mostrarInstrucciones() {
+    _btnVolver(mostrarInicio);
     const contenidoDiv = document.getElementById("mod");
 
     while (contenidoDiv.firstChild) {
@@ -105,6 +107,7 @@ function mostrarInstrucciones() {
 };
 
 function mostrarTableros() {
+    _btnVolver(mostrarInicio);
     const contenidoDiv = document.getElementById("mod");
     contenidoDiv.className = "tablerosDisp";
 
@@ -180,6 +183,7 @@ function eleccionTablero() {
 };
 
 function crearPartida(tablero) {
+    _btnVolver(mostrarTableros);
     const contenidoDiv = document.getElementById("mod");
 
     while (contenidoDiv.firstChild) {
@@ -226,6 +230,18 @@ document.addEventListener("DOMContentLoaded", mostrarInicio);
 
 const logo = document.getElementById("logo");
 logo.addEventListener("click", mostrarInicio);
+
+// ── Botón volver ─────────────────────────────────────────────────────────────
+
+function _btnVolver(destino) {
+    const btn = document.getElementById("btnVolver");
+    if (!destino) {
+        btn.style.display = "none";
+        return;
+    }
+    btn.style.display = "block";
+    btn.onclick = destino;
+}
 
 // ── Generador de tableros aleatorios ─────────────────────────────────────────
 
