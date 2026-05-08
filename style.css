@@ -303,21 +303,33 @@ footer a {
 
 .casilla {
     background-color: purple;
+    min-width: 100px;
+    min-height: 100px;
     border: 1px black solid;
     border-radius: 20px;
 }
 
-.small .casilla {
-    min-width: 130px;
-    min-height: 130px;
+
+.btnReiniciarDin {
+    display: block;
+    margin: 16px auto 16px auto;
+    height: 50px;
+    width: 160px;
+    font-size: 13px;
+    background-color: #7c238cff;
+    border: 1px #7c238cff solid;
+    border-radius: 30px;
+    box-shadow: 10px 10px 17px black;
+    color: white;
 }
 
-.medium .casilla {
-    min-width: 90px;
-    min-height: 90px;
-}
 
-.big .casilla {
-    min-width: 70px;
-    min-height: 70px;
+.mensajeError, .mensajeVictoria {
+    max-width: 600px;
+    text-align: center;
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 24px;
+    color: white;
+    word-break: break-word;
 }
