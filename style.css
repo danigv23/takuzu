@@ -303,8 +303,21 @@ footer a {
 
 .casilla {
     background-color: purple;
-    min-width: 100px;
-    min-height: 100px;
     border: 1px black solid;
     border-radius: 20px;
+}
+
+.small .casilla {
+    min-width: 130px;
+    min-height: 130px;
+}
+
+.medium .casilla {
+    min-width: 90px;
+    min-height: 90px;
+}
+
+.big .casilla {
+    min-width: 70px;
+    min-height: 70px;
 }

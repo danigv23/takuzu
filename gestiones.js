@@ -74,6 +74,7 @@ function mostrarInicio() {
     botInstrucciones.addEventListener("click", mostrarInstrucciones);
     botJugar.addEventListener("click", () => {
         mostrarTableros();
+        eleccionTablero();
     });
 };
 
@@ -212,22 +213,44 @@ function crearPartida(tablero) {
         case "hard8":
             takuzu = new Takuzu(tableros[5]);
             break;
-        case "random4":
-            takuzu = new Takuzu(generarTableroAleatorio(4));
-            break;
-        case "random6":
-            takuzu = new Takuzu(generarTableroAleatorio(6));
-            break;
-        case "random8":
-            takuzu = new Takuzu(generarTableroAleatorio(8));
-            break;
     };
-    takuzu.renderizarTablero();
+    takuzu.renderizarTablero(mostarVista);
+
+    function mostarVista(estado) {
+        let mensajeErr;
+
+        switch (estado) {
+
+            case 0:
+                mensajeErr = "Ganaste.";
+                break;
+            case 1:
+                mensajeErr = "Existe una fila o columna con un numero diferente de unos que ceros.";
+                break;
+            case 2:
+                mensajeErr = "Existen una fila o columna con 3 unos o ceros seguidos.";
+                break;
+            case 3:
+                mensajeErr = "Existen dos filas o columnas iguales.";
+                break;
+        };
+        console.log(mensajeErr)
+    }
+
+
+    // estado = takuzu.comprobarVictoria();
+    // let mensajeErr;
+
+    // if (estado !== 1) {
+
+    //     contenidoDiv.appendChild(mensajeErr);
+    // };
+
 };
 
-/////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
 document.addEventListener("DOMContentLoaded", mostrarInicio);
-/////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
 
 const logo = document.getElementById("logo");
 logo.addEventListener("click", mostrarInicio);
