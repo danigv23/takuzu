@@ -63,7 +63,7 @@ class Takuzu {
         if (this.#posicionesBloq.includes(id)) return;
 
         switch (this.#tablero[x][y]) {
-            case "":  this.#tablero[x][y] = "0"; break;
+            case "": this.#tablero[x][y] = "0"; break;
             case "0": this.#tablero[x][y] = "1"; break;
             case "1": this.#tablero[x][y] = ""; break;
         }
@@ -88,7 +88,7 @@ class Takuzu {
         let y = pos[1];
 
         switch (this.#tablero[x][y]) {
-            case "":  casilla.style.backgroundColor = "#42033dff"; break;
+            case "": casilla.style.backgroundColor = "#42033dff"; break;
             case "0": casilla.style.backgroundColor = "#680e4bff"; break;
             case "1": casilla.style.backgroundColor = "#854798ff"; break;
         }
@@ -104,11 +104,11 @@ class Takuzu {
         let filasErr = [], colsErr = [];
         for (let i = 0; i < n; i++) {
             for (let j = 0; j < n - 2; j++) {
-                if (this.#tablero[i][j] === this.#tablero[i][j+1] &&
-                    this.#tablero[i][j] === this.#tablero[i][j+2]) {
+                if (this.#tablero[i][j] === this.#tablero[i][j + 1] &&
+                    this.#tablero[i][j] === this.#tablero[i][j + 2]) {
                     if (!filasErr.includes(i)) filasErr.push(i);
                 }
-                if (t[i][j] === t[i][j+1] && t[i][j] === t[i][j+2]) {
+                if (t[i][j] === t[i][j + 1] && t[i][j] === t[i][j + 2]) {
                     if (!colsErr.includes(i)) colsErr.push(i);
                 }
             }

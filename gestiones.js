@@ -167,12 +167,12 @@ function crearPartida(idTablero) {
     let takuzu;
 
     switch (idTablero) {
-        case "easy4":   takuzu = new Takuzu(tableros[0].map(f => [...f])); break;
-        case "hard4":   takuzu = new Takuzu(tableros[1].map(f => [...f])); break;
-        case "easy6":   takuzu = new Takuzu(tableros[2].map(f => [...f])); break;
-        case "hard6":   takuzu = new Takuzu(tableros[3].map(f => [...f])); break;
-        case "easy8":   takuzu = new Takuzu(tableros[4].map(f => [...f])); break;
-        case "hard8":   takuzu = new Takuzu(tableros[5].map(f => [...f])); break;
+        case "easy4": takuzu = new Takuzu(tableros[0].map(f => [...f])); break;
+        case "hard4": takuzu = new Takuzu(tableros[1].map(f => [...f])); break;
+        case "easy6": takuzu = new Takuzu(tableros[2].map(f => [...f])); break;
+        case "hard6": takuzu = new Takuzu(tableros[3].map(f => [...f])); break;
+        case "easy8": takuzu = new Takuzu(tableros[4].map(f => [...f])); break;
+        case "hard8": takuzu = new Takuzu(tableros[5].map(f => [...f])); break;
         case "random4": takuzu = new Takuzu(generarTableroAleatorio(4)); break;
         case "random6": takuzu = new Takuzu(generarTableroAleatorio(6)); break;
         case "random8": takuzu = new Takuzu(generarTableroAleatorio(8)); break;
@@ -276,13 +276,13 @@ function _resolverAleatorio(tablero, size) {
 function _movimientoValido(tablero, size, row, col) {
     const fila = tablero[row];
     for (let j = 0; j <= size - 3; j++) {
-        if (fila[j] !== "" && fila[j] === fila[j+1] && fila[j+1] !== "" &&
-            fila[j] === fila[j+2] && fila[j+2] !== "") return false;
+        if (fila[j] !== "" && fila[j] === fila[j + 1] && fila[j + 1] !== "" &&
+            fila[j] === fila[j + 2] && fila[j + 2] !== "") return false;
     }
     for (let i = 0; i <= size - 3; i++) {
-        if (tablero[i][col] !== "" && tablero[i][col] === tablero[i+1][col] &&
-            tablero[i+1][col] !== "" && tablero[i][col] === tablero[i+2][col] &&
-            tablero[i+2][col] !== "") return false;
+        if (tablero[i][col] !== "" && tablero[i][col] === tablero[i + 1][col] &&
+            tablero[i + 1][col] !== "" && tablero[i][col] === tablero[i + 2][col] &&
+            tablero[i + 2][col] !== "") return false;
     }
     const c0 = fila.filter(v => v === "0").length;
     const c1 = fila.filter(v => v === "1").length;
