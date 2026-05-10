@@ -55,6 +55,25 @@ main {
     cursor: pointer;
 }
 
+.btnVolver {
+    position: fixed;
+    top: 40px;
+    right: 50px;
+    height: 80px;
+    width: 80px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    z-index: 100;
+    padding: 0;
+}
+
+.btnVolver img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(100);
+}
+
 header {
     display: flex;
     flex-direction: column;
@@ -280,15 +299,33 @@ footer a {
 
 .casilla {
     background-color: purple;
-    min-width: 80px;
-    min-height: 80px;
+    min-width: 100px;
+    min-height: 100px;
     border: 1px black solid;
-    border-radius: 15px;
+    border-radius: 20px;
 }
 
 
-/* 
-4x4 150 
-6x6 100
-8x8 80
-*/
+.btnReiniciarDin {
+    display: block;
+    margin: 16px auto 16px auto;
+    height: 50px;
+    width: 160px;
+    font-size: 13px;
+    background-color: #7c238cff;
+    border: 1px #7c238cff solid;
+    border-radius: 30px;
+    box-shadow: 10px 10px 17px black;
+    color: white;
+}
+
+
+.mensajeError, .mensajeVictoria {
+    max-width: 600px;
+    text-align: center;
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 24px;
+    color: white;
+    word-break: break-word;
+}

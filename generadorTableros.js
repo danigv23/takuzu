@@ -1,14 +1,3 @@
-/**
- * GENERADOR DE TABLEROS TAKUZU ALEATORIOS
- * Genera tableros válidos para los tamaños 4x4, 6x6 y 8x8.
- *
- * Reglas del Takuzu:
- *  1. Igual número de 0s y 1s en cada fila y columna.
- *  2. No más de dos iguales consecutivos (ni "000" ni "111").
- *  3. No hay dos filas iguales entre sí.
- *  4. No hay dos columnas iguales entre sí.
- */
-
 class GeneradorTakuzu {
 
     /**
@@ -175,13 +164,6 @@ class GeneradorTakuzu {
         }
     }
 }
-
-
-// ─────────────────────────────────────────────────────────────────────────────
-// INTEGRACIÓN CON EL MENÚ DE SELECCIÓN
-// Añade estas funciones a tu index.html / main.js para mostrar el generador
-// como opción extra en el menú de tamaños de tablero.
-// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Genera y muestra un tablero aleatorio del tamaño indicado.
